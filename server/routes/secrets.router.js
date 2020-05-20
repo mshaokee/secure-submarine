@@ -18,7 +18,7 @@ const { rejectAuthorization } = require('../modules/authorization-middleware');
 router.get('/', rejectAuthorization, (req, res) => {
     console.log('req.user:', req.user);
     // pool.query('SELECT * FROM "user";')
-    let queryString = `SELECT "content" FROM "secret"
+    let queryString = `SELECT content FROM "secret"
                 JOIN "user" ON "user".clearance_level >= "secret".secrecy_level
                 WHERE "user".id = $1;`;
     console.log(req.user.clearance_level);
